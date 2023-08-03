@@ -43,3 +43,21 @@
 Внутри HEAD — ссылка на служебный файл: `refs/heads/master` (или `refs/heads/main` в зависимости от названия ветки). Этот файл содержит хеш последнего коммита.
 
 В командах Git dместо хеша последнего коммита можно писать слово `HEAD`.
+
+## Статусы файлов в Git
+- **untracked** - Git не следит за изменениями в файле.
+- **tracked** -статус всех файлов, отслеживаемых Git.
+- **staged** - в этот статус файл переходит после выполнения `git add`.
+- **modified** - файл был изменён.
+
+```mermaid
+%% Схема статусов файлов в Git
+graph LR;
+  untracked -- "git add" --> staged;
+  modified  -- "git add" --> staged;
+  staged    -- "git commit" --> tracked/comitted;
+  staged    -- "изменения" --> modified;
+  tracked/commited   -- "изменения" --> modified;
+``` 
+
+
